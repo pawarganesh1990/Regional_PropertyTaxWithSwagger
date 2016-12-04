@@ -50,10 +50,15 @@ public class RegisterUserDaoImpl implements RegisterUserDao {
 
 	@Override
 	public List<RegUsers> getUserList() throws Exception {
-		Session session = sessionFactory.getCurrentSession();
-		Criteria criteria=session.createCriteria(RegUsers.class);
-		List<RegUsers> userList = criteria.list();
-		return  userList;
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			Criteria criteria=session.createCriteria(RegUsers.class);
+			List<RegUsers> userList = criteria.list();
+			return  userList;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	@Override

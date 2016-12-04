@@ -51,7 +51,7 @@ public class Flat implements java.io.Serializable {
 		this.flatId = flatId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "plot_id", nullable = false)
 	public Plot getPlot() {
 		return this.plot;

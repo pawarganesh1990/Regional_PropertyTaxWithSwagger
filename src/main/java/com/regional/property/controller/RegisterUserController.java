@@ -3,6 +3,7 @@ package com.regional.property.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -113,7 +114,7 @@ public class RegisterUserController {
 	public @ResponseBody
 	List<RegUsers> getEmployee() {
 
-		List<RegUsers> userList = null;
+		List<RegUsers> userList = new ArrayList<RegUsers>();
 		try {
 			userList = userService.getUserList();
 

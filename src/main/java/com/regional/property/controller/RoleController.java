@@ -23,7 +23,9 @@ import com.regional.property.services.RoleService;
 @RequestMapping("role")
 @Api(value = "This controller will deal with Role module")
 public class RoleController {
+
 	private static final Logger logger = Logger.getLogger(RoleController.class);
+
 	@Autowired
 	private RoleService	roleService;
 
@@ -35,7 +37,7 @@ public class RoleController {
 		this.roleService = roleService;
 	}
 
-	@RequestMapping(value = "/createRole", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/createrole", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody
 	Role createRole(@RequestBody Role role) {
 		try {
@@ -75,7 +77,6 @@ public class RoleController {
 			exception.printStackTrace();
 			logger.error(exception);
 		}
-
 		return roleList;
 	}
 

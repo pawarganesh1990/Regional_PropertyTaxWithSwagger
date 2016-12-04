@@ -35,6 +35,8 @@ public class RoleDaoImpl implements RoleDao {
 	public Role getRoleById(long id) throws Exception {
 		Session session = sessionFactory.getCurrentSession();
 		Role role = (Role) session.get(Role.class, new Long(id).intValue());
+		Hibernate.initialize(role.getUserRoleses());
+
 		return role;
 	}
 
@@ -45,9 +47,16 @@ public class RoleDaoImpl implements RoleDao {
 			Session session = sessionFactory.getCurrentSession();
 			Criteria criteria=session.createCriteria(Role.class);
 			roleList = criteria.list();
+			Hibernate.initialize(roleList);
+
 			for (Role role : roleList) 
 			{
 				Hibernate.initialize(role.getUserRoleses());
+
+				/*for (UserRoles userRole : role.getUserRoleses()) {
+					Hibernate.initialize(userRole);
+
+				}*/
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
